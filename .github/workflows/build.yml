@@ -26,8 +26,6 @@ jobs:
       - name: Terraform init
         run: |
           terraform init
-          terraform workspace select production
-          terraform providers lock -update
 
       - name: Terraform plan
         run: |
