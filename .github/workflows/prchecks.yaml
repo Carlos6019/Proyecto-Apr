@@ -1,0 +1,29 @@
+name: Terraform Check
+
+on:
+  pull_request:
+    branches:
+      - production
+
+jobs:
+  terraform-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.6.6
+
+      - name: Configure Terraform
+        run: |
+          terraform init -input=false
+          terraform workspace select production || terraform workspace new production
+          terraform providers lock -update
+
+      - name: Validate Terraform
+        run: terraform validate
+
+      - name: Plan Terraform
+        run: terraform plan
