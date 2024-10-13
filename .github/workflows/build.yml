@@ -25,9 +25,13 @@ jobs:
 
       - name: Configure Terraform
         run: |
-          terraform init -input=false
+          terraform init
           terraform workspace select production
           terraform providers lock -update
+
+      - name: Configure Terraform
+        run: |
+          terraform plan
 
       - name: Apply Terraform
         run: terraform apply -auto-approve
