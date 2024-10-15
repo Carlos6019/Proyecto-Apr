@@ -49,4 +49,7 @@ Puedes usar port forwarding para acceder a la interfaz de usuario de Argo CD loc
 Para acceder a Argo CD, necesitarás la contraseña del usuario admin. Obtén la contraseña con el siguiente comando:
 - kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 --decode
 
+**DOCUMENTACION OFICIAL DE ARGOCD**
+- https://argo-cd.readthedocs.io/en/stable/
+
 
